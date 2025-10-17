@@ -17,6 +17,14 @@ const config: Config = {
       fontFamily: {
         primary: ["var(--font-jetbrainsMono)"],
       },
+      colors: {
+        primary: "#1c1c22",
+        secondary: "#1F2937",
+        accent: {
+          DEFAULT: "#00ff99",
+          hover: "#00e187",
+        },
+      },
     },
   },
 };
