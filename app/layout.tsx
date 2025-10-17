@@ -1,7 +1,22 @@
+// Modules imports
 import type { Metadata } from "next";
-import "./globals.css";
 import { ReactNode } from "react";
 
+// Fonts import
+import { JetBrains_Mono } from "next/font/google";
+
+// Styles import
+import "./globals.css";
+
+// Font configuration
+const jetBrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800"],
+  variable: "--font-jetbrainsMono",
+  display: "swap",
+});
+
+// Metadata configuration
 export const metadata: Metadata = {
   title: "Portfolio - Sinisa Stojanovic",
   description: "Sinisa Stojanovic's personal portfolio website.",
@@ -18,7 +33,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`antialiased`}>{children}</body>
+      <body className={`${jetBrainsMono.variable} antialiased`}>
+        {children}
+      </body>
     </html>
   );
 }
