@@ -8,7 +8,7 @@ const Header = () => {
       <div className={"container mx-auto flex items-center justify-between "}>
         {/* Logo */}
         {/*  todo: onHover radiate around link*/}
-        <Link href={"/"} className={"active:scale-90 transition duration-200"}>
+        <Link href={"/"} className={"active:scale-95 transition duration-200"}>
           <div
             className={
               "w-16 h-16 flex items-center justify-center rounded-full border-3 border-accent cursor-pointer"
@@ -24,7 +24,7 @@ const Header = () => {
           {/*  todo: Main nav */}
           <Nav />
           <Link href={"/contact"}>
-            <Button className={" text-primary bg-white"}>Contact me!</Button>
+            <Button>Contact me!</Button>
           </Link>
         </div>
 
