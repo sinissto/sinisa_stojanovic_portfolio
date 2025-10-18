@@ -1,10 +1,17 @@
 "use client";
 
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { CiMenuFries } from "react-icons/ci";
 import Link from "next/link";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 
 interface MobileNavProps {
   links: { name: string; path: string }[];
@@ -24,6 +31,11 @@ function MobileNav({ links }: MobileNavProps) {
         />
       </SheetTrigger>
       <SheetContent>
+        <VisuallyHidden>
+          <SheetTitle>Mobile Nav</SheetTitle>
+          <SheetDescription />
+        </VisuallyHidden>
+
         <div className={"mt-32 mb-32 text-center flex justify-center"}>
           {/* Logo */}
           <Link
