@@ -1,0 +1,27 @@
+import Link from "next/link";
+import { FaGithub, FaLinkedin, FaTwitter, FaYoutube } from "react-icons/fa";
+
+// todo: add your social links for github and linkedin
+const socials = [
+  { icon: <FaGithub />, path: "" },
+  { icon: <FaLinkedin />, path: "" },
+];
+
+const Socials = () => {
+  return (
+    <div className={"flex gap-6"}>
+      {socials.map(({ icon, path }, index) => (
+        <Link
+          key={index}
+          href={path}
+          className={`text-2xl w-11 h-11 border hover:border-accent rounded-full flex items-center justify-center text-accent  hover:bg-accent hover:text-primary transition hover:transition-all duration-500`}
+          target={"_blank"}
+        >
+          {icon}
+        </Link>
+      ))}
+    </div>
+  );
+};
+
+export default Socials;

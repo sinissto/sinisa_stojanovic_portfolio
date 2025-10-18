@@ -26,7 +26,6 @@ const Header = () => {
         {/* Navigation and "Contact me" button */}
         <div className={"hidden lg:flex items-center gap-8"}>
           {/* NAV */}
-          {/*  todo: Main nav */}
           <Nav links={links} />
           <Link href={"/contact"}>
             <Button>Contact me!</Button>
