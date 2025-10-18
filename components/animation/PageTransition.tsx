@@ -7,7 +7,6 @@ import { ReactNode } from "react";
 
 const PageTransition = ({ children }: { children: ReactNode }) => {
   const pathname = usePathname();
-  console.log(children);
 
   return (
     <AnimatePresence>
