@@ -20,7 +20,7 @@ const StairTransition = () => {
 
         <motion.div
           className={
-            "h-screen w-screen bg-primary top-0 left-0 right-0 pointer-events-none"
+            "h-screen w-screen fixed bg-primary top-0 left-0 right-0 pointer-events-none"
           }
           initial={{ opacity: 1 }}
           animate={{

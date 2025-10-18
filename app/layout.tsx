@@ -24,16 +24,12 @@ export const metadata: Metadata = {
   title: "Portfolio - Sinisa Stojanovic",
   description: "Sinisa Stojanovic's personal portfolio website.",
   icons: {
-    // replace with your favicon icon and path
+    // todo: replace with your favicon icon and path
     icon: "/favicon.ico",
   },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: ReactNode;
-}>) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <body className={`${jetBrainsMono.variable} antialiased`}>
