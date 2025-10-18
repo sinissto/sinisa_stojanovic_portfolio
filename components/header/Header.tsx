@@ -1,6 +1,18 @@
+//Modules
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+
+//Components
 import Nav from "@/components/header/Nav";
+import MobileNav from "@/components/header/MobileNav";
+
+const links = [
+  { name: "home", path: "/" },
+  { name: "work", path: "/work" },
+  { name: "resume", path: "/resume" },
+  { name: "about me", path: "/aboutMe" },
+  { name: "contact", path: "/contact" },
+];
 
 const Header = () => {
   return (
@@ -22,15 +34,16 @@ const Header = () => {
         <div className={"hidden lg:flex items-center gap-8"}>
           {/* NAV */}
           {/*  todo: Main nav */}
-          <Nav />
+          <Nav links={links} />
           <Link href={"/contact"}>
             <Button>Contact me!</Button>
           </Link>
         </div>
 
         {/* Mobile navigation */}
-        {/* todo: mobile nav */}
-        <div className={"lg:hidden"}>MOBILE NAV</div>
+        <div className={"lg:hidden"}>
+          <MobileNav links={links} />
+        </div>
       </div>
     </header>
   );

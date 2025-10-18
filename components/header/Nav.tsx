@@ -3,15 +3,11 @@
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 
-const links = [
-  { name: "home", path: "/" },
-  { name: "work", path: "/work" },
-  { name: "resume", path: "/resume" },
-  { name: "about me", path: "/aboutMe" },
-  { name: "contact", path: "/contact" },
-];
+interface NavProps {
+  links: { name: string; path: string }[];
+}
 
-const Nav = () => {
+function Nav({ links }: NavProps) {
   const pathname = usePathname();
 
   return (
@@ -29,6 +25,6 @@ const Nav = () => {
       ))}
     </nav>
   );
-};
+}
 
 export default Nav;
