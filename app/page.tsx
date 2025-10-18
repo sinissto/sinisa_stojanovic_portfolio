@@ -1,12 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { FiDownload } from "react-icons/fi";
 import Socials from "@/components/home/Socials";
+import Section from "@/components/Section";
 
 export default function HomePage() {
   return (
-    <section
-      className={"bg-gray-600 flex flex-col justify-center py-12 lg:py-0"}
-    >
+    <Section>
       <div className={"container mx-auto h-full"}>
         <div
           className={
@@ -34,20 +33,22 @@ export default function HomePage() {
                 className={"uppercase flex items-center gap-8"}
               >
                 <span>Download CV</span>
-                <FiDownload className={""} />
+                <FiDownload className={"text-xl"} />
               </Button>
 
-              <div className={""}>
+              <div className={"mb-8 lg:mb-0"}>
                 <Socials />
               </div>
             </div>
           </div>
           {/* Right side */}
-          <div className={""}>Portrait image</div>
+          <div className={"order-1 lg:order-none mb-8 lg:mb-0"}>
+            Portrait image
+          </div>
         </div>
       </div>
 
       {/* Technologies */}
-    </section>
+    </Section>
   );
 }

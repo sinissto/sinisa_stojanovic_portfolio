@@ -32,7 +32,9 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
-      <body className={`${jetBrainsMono.variable} antialiased`}>
+      <body
+        className={`${jetBrainsMono.variable} antialiased min-h-screen flex flex-col`}
+      >
         <Header />
         <StairTransition />
         <PageTransition>{children}</PageTransition>
