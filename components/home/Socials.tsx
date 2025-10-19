@@ -3,8 +3,11 @@ import { FaGithub, FaLinkedin } from "react-icons/fa";
 
 // todo: add your social links for github and linkedin
 const socials = [
-  { icon: <FaGithub />, path: "" },
-  { icon: <FaLinkedin />, path: "" },
+  { icon: <FaGithub />, path: "https://github.com/sinissto" },
+  {
+    icon: <FaLinkedin />,
+    path: "https://www.linkedin.com/in/stojanovic-sinisa/",
+  },
 ];
 
 const Socials = () => {
