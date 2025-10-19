@@ -27,16 +27,23 @@ export default function HomePage() {
 
             {/* CV download button and social icons */}
             <div className={"flex flex-col lg:flex-row items-center gap-8"}>
-              <Button
-                variant={"outline"}
-                size={"lg"}
-                className={
-                  "uppercase flex items-center gap-8 active:scale-95 transition-all duration-200"
-                }
+              <a
+                href={"/Sinisa_Stojanovic_CV.pdf"}
+                target={"_blank"}
+                rel="noopener noreferrer"
+                download={false}
               >
-                <span>Download CV</span>
-                <FiDownload className={"text-xl"} />
-              </Button>
+                <Button
+                  variant={"outline"}
+                  size={"lg"}
+                  className={
+                    "uppercase flex items-center gap-8 active:scale-95 transition-all duration-200"
+                  }
+                >
+                  <span>Download CV</span>
+                  <FiDownload className={"text-xl"} />
+                </Button>
+              </a>
 
               <div className={"mb-8 lg:mb-0"}>
                 <Socials />
