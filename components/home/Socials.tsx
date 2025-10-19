@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 
-// todo: add your social links for github and linkedin
 const socials = [
   { icon: <FaGithub />, path: "https://github.com/sinissto" },
   {
