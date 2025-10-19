@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { FaGithub, FaLinkedin, FaTwitter, FaYoutube } from "react-icons/fa";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 
 // todo: add your social links for github and linkedin
 const socials = [
