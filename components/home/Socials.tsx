@@ -14,7 +14,7 @@ const Socials = () => {
         <Link
           key={index}
           href={path}
-          className={`text-2xl w-11 h-11 border hover:border-accent rounded-full flex items-center justify-center text-accent  hover:bg-accent hover:text-primary transition hover:transition-all duration-500`}
+          className={`text-2xl w-11 h-11 border hover:border-accent rounded-full flex items-center justify-center text-accent  hover:bg-accent hover:text-primary active:scale-90 transition hover:transition-all duration-200`}
           target={"_blank"}
         >
           {icon}

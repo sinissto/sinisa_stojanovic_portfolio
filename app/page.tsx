@@ -30,7 +30,9 @@ export default function HomePage() {
               <Button
                 variant={"outline"}
                 size={"lg"}
-                className={"uppercase flex items-center gap-8"}
+                className={
+                  "uppercase flex items-center gap-8 active:scale-95 transition-all duration-200"
+                }
               >
                 <span>Download CV</span>
                 <FiDownload className={"text-xl"} />
@@ -42,6 +44,7 @@ export default function HomePage() {
             </div>
           </div>
           {/* Right side */}
+          {/* todo: add homepage photo*/}
           <div className={"order-1 lg:order-none mb-8 lg:mb-0"}>
             Portrait image
           </div>
