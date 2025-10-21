@@ -3,6 +3,7 @@ import { FiDownload } from "react-icons/fi";
 import Socials from "@/components/home/Socials";
 import Section from "@/components/Section";
 import Link from "next/link";
+import Photo from "@/components/home/Photo";
 
 export default function HomePage() {
   return (
@@ -29,7 +30,7 @@ export default function HomePage() {
             {/* CV download button and social icons */}
             <div className={"flex flex-col lg:flex-row items-center gap-8"}>
               <Link
-                href={"/Sinisa_Stojanovic_CV.pdf"}
+                href={"/resume/Sinisa_Stojanovic_CV.pdf"}
                 target={"_blank"}
                 rel="noopener noreferrer"
                 download={false}
@@ -54,7 +55,7 @@ export default function HomePage() {
           {/* Right side */}
           {/* todo: add homepage photo*/}
           <div className={"order-1 lg:order-none mb-8 lg:mb-0"}>
-            Portrait image
+            <Photo />
           </div>
         </div>
       </div>
