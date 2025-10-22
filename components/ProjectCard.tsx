@@ -3,6 +3,11 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { FiRefreshCw } from "react-icons/fi";
 import { HiCursorArrowRipple } from "react-icons/hi2";
+import Link from "next/link";
+import Socials from "@/components/home/Socials";
+import { Button } from "@/components/ui/button";
+import { FaGithub } from "react-icons/fa";
+import { BsArrowUpRight } from "react-icons/bs";
 
 type Project = {
   slug: string;
@@ -48,11 +53,11 @@ export default function ProjectCard({ project }: { project: Project }) {
 
   return (
     <div
-      className="relative w-full  cursor-pointer"
+      className="relative w-full"
       style={containerStyle}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
-      onClick={() => router.push(`/work/${project.slug}`)}
+      // onClick={() => router.push(`/work/${project.slug}`)}
     >
       {/* hint overlay */}
       {/*{!hover && (*/}
@@ -63,19 +68,32 @@ export default function ProjectCard({ project }: { project: Project }) {
       {/*  </div>*/}
       {/*)}*/}
 
-      {!hover && (
-        <div className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none">
-          <div className="w-full h-full bg-black/10 text-white text-sm p-10 rounded flex items-center justify-center">
-            <HiCursorArrowRipple className="w-[64px] h-[64px] text-accent/40 animate-pulse" />
-          </div>
-        </div>
-      )}
+      {/*{!hover && (*/}
+      {/*  <div className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none">*/}
+      {/*    <div className="w-full h-full bg-black/10 text-white text-sm p-10 rounded flex items-start justify-center">*/}
+      {/*      <HiCursorArrowRipple*/}
+      {/*        style={{ animationDuration: "1.2s" }}*/}
+      {/*        className="w-[64px] h-[64px] text-accent animate-pulse"*/}
+      {/*      />*/}
+      {/*    </div>*/}
+      {/*  </div>*/}
+      {/*)}*/}
 
       <div style={innerStyle} className="relative w-full h-full">
         {/* front */}
         <div style={faceStyle} className="bg-[#232329] shadow-md">
           {/* screenshot of project*/}
-          <div className="w-full h-32 bg-gray-200">
+          <div className="w-full h-56 relative">
+            {!hover && (
+              <div className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none">
+                <div className="w-full h-full bg-black/10 text-white text-sm p-10 rounded flex items-center justify-center">
+                  <HiCursorArrowRipple
+                    style={{ animationDuration: "1.2s" }}
+                    className="w-[64px] h-[64px] text-primary/80 animate-pulse"
+                  />
+                </div>
+              </div>
+            )}
             {/* todo: Replace <img/> tag with Next.js <Image/> */}
             <img
               src={project.image}
@@ -83,59 +101,90 @@ export default function ProjectCard({ project }: { project: Project }) {
               className="w-full h-full object-cover"
             />
           </div>
-          <div className="p-3">
-            <h3 className="font-semibold text-lg">{project.title}</h3>
-            <p className="text-sm text-gray-500 mt-1">{project.short}</p>
-            <div className="flex flex-wrap gap-2 mt-3">
+          <div className="py-3 px-5">
+            <h3 className="font-semibold text-lg text-accent mb-5">
+              {project.title}
+            </h3>
+            <p className="text-sm text-white mb-5">{project.short}</p>
+
+            <h3 className={"font-semibold mb-2"}>Technologies</h3>
+            <div className="flex flex-wrap gap-2 mb-5">
               {project.tech.map((t) => (
-                <span key={t} className="text-xs bg-gray-100 px-2 py-1 rounded">
+                <span
+                  key={t}
+                  className="text-xs inline-block px-3 py-1 ring ring-accent rounded"
+                >
                   {t}
                 </span>
               ))}
             </div>
-            <div className="mt-3 flex gap-3">
-              {project.github && (
-                <a
-                  href={project.github}
-                  target="_blank"
-                  rel="noreferrer"
-                  onClick={(e) => e.stopPropagation()}
-                  className="text-sm text-blue-600 underline"
-                >
-                  GitHub
-                </a>
-              )}
-              {project.live && (
-                <a
-                  href={project.live}
-                  target="_blank"
-                  rel="noreferrer"
-                  onClick={(e) => e.stopPropagation()}
-                  className="text-sm text-green-600 underline"
-                >
-                  Live
-                </a>
-              )}
-            </div>
+
+            {/*<div className="mb-4 flex gap-3">*/}
+            {/*  {project.github && (*/}
+            {/*    <Link*/}
+            {/*      href={project.github}*/}
+            {/*      target="_blank"*/}
+            {/*      rel="noreferrer"*/}
+            {/*      onClick={(e) => e.stopPropagation()}*/}
+            {/*      className="text-sm text-blue-600 underline"*/}
+            {/*    >*/}
+            {/*      GitHub*/}
+            {/*    </Link>*/}
+            {/*  )}*/}
+            {/*  {project.live && (*/}
+            {/*    <Link*/}
+            {/*      href={project.live}*/}
+            {/*      target="_blank"*/}
+            {/*      rel="noreferrer"*/}
+            {/*      onClick={(e) => e.stopPropagation()}*/}
+            {/*      className="text-sm text-green-600 underline"*/}
+            {/*    >*/}
+            {/*      Live*/}
+            {/*    </Link>*/}
+            {/*  )}*/}
+            {/*</div>*/}
           </div>
         </div>
 
         {/* back */}
-        <div style={backStyle} className="bg-white shadow-md p-4">
-          <h3 className="font-semibold text-lg">{project.title}</h3>
-          <p className="text-sm text-gray-600 mt-2 line-clamp-5">
+        <div style={backStyle} className="bg-[#232329] shadow-md p-5">
+          <h3 className="font-semibold text-xl text-accent mb-5">
+            {project.title}
+          </h3>
+          <p className="text-[16px] line text-white leading-[1.3rem] mb-8">
             {project.description || project.short}
           </p>
-          <div className="mt-4">
-            <button
+          <div className="flex flex-col items-center">
+            <div className="mb-4 flex gap-8">
+              {project.github && (
+                <Link
+                  href={project.github}
+                  className={`text-2xl w-11 h-11 border-2 hover:border-accent rounded-full flex items-center justify-center text-accent  hover:bg-accent hover:text-primary active:scale-90 transition hover:transition-all duration-200`}
+                  target={"_blank"}
+                >
+                  <FaGithub />
+                </Link>
+              )}
+              {project.live && (
+                <Link
+                  href={project.live}
+                  className={`text-2xl w-11 h-11 border-2 hover:border-accent rounded-full flex items-center justify-center text-accent  hover:bg-accent hover:text-primary active:scale-90 transition hover:transition-all duration-200`}
+                  target={"_blank"}
+                >
+                  <BsArrowUpRight />
+                </Link>
+              )}
+            </div>
+            <Button
+              variant={"outline"}
               onClick={(e) => {
                 e.stopPropagation();
                 router.push(`/work/${project.slug}`);
               }}
-              className="px-3 py-1 bg-blue-600 text-white rounded text-sm"
+              className="px-3 py-1 text-white rounded text-sm cursor-pointer mt-5"
             >
               View details
-            </button>
+            </Button>
           </div>
         </div>
       </div>

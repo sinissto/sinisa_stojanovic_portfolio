@@ -2,7 +2,7 @@ export const projects = [
   {
     slug: "rent-adventure",
     title: "Rent Adventure",
-    image: "/projects/rent-adventure.jpg",
+    image: "/projects/rent_adventure.png",
     tech: ["Next.js", "Tailwind", "Supabase", "Auth.js", "React Context API"],
     github: "https://github.com/sinissto/rent-adventure",
     live: "https://rent-adventure.vercel.app/",
@@ -11,9 +11,9 @@ export const projects = [
       "Full-stack web application that allows adventure motorbike enthusiasts to browse, filter, and rent motorbikes online. I designed and implemented the entire platform — from secure authentication and database integration to reservation workflows and responsive UI — ensuring real-time availability and a smooth user experience.",
   },
   {
-    slug: "rent-adventure-back-office",
+    slug: "rent_adventure_back_office",
     title: "Rent Adventure Admin Dashboard",
-    image: "/projects/rent-adventure-back-office.jpg",
+    image: "/projects/rent_adventure_back_office.png",
     tech: [
       "React",
       "Styled Components",
