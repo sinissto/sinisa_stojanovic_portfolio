@@ -1,6 +1,8 @@
 "use client";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
+import { FiRefreshCw } from "react-icons/fi";
+import { HiCursorArrowRipple } from "react-icons/hi2";
 
 type Project = {
   slug: string;
@@ -25,11 +27,11 @@ export default function ProjectCard({ project }: { project: Project }) {
     transformStyle: "preserve-3d",
     transition: "transform 0.6s",
     transform: hover ? "rotateY(180deg)" : "rotateY(0deg)",
-    height: "100%",
+    // height: "100%",
   };
 
   const faceStyle: React.CSSProperties = {
-    position: "absolute",
+    position: "relative",
     inset: 0,
     backfaceVisibility: "hidden",
     WebkitBackfaceVisibility: "hidden",
@@ -39,22 +41,32 @@ export default function ProjectCard({ project }: { project: Project }) {
 
   const backStyle: React.CSSProperties = {
     ...faceStyle,
+    position: "absolute",
+    inset: 0,
     transform: "rotateY(180deg)",
   };
 
   return (
     <div
-      className="relative w-full h-64 cursor-pointer"
+      className="relative w-full  cursor-pointer"
       style={containerStyle}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
       onClick={() => router.push(`/work/${project.slug}`)}
     >
       {/* hint overlay */}
+      {/*{!hover && (*/}
+      {/*  <div className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none">*/}
+      {/*    <div className="bg-black/50 text-white text-sm px-3 py-1 rounded">*/}
+      {/*      Hover to flip*/}
+      {/*    </div>*/}
+      {/*  </div>*/}
+      {/*)}*/}
+
       {!hover && (
         <div className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none">
-          <div className="bg-black/50 text-white text-sm px-3 py-1 rounded">
-            Hover to flip
+          <div className="w-full h-full bg-black/10 text-white text-sm p-10 rounded flex items-center justify-center">
+            <HiCursorArrowRipple className="w-[64px] h-[64px] text-accent/40 animate-pulse" />
           </div>
         </div>
       )}
@@ -62,6 +74,7 @@ export default function ProjectCard({ project }: { project: Project }) {
       <div style={innerStyle} className="relative w-full h-full">
         {/* front */}
         <div style={faceStyle} className="bg-[#232329] shadow-md">
+          {/* screenshot of project*/}
           <div className="w-full h-32 bg-gray-200">
             {/* todo: Replace <img/> tag with Next.js <Image/> */}
             <img

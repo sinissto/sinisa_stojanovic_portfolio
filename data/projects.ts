@@ -1,25 +1,32 @@
 export const projects = [
   {
-    slug: "awesome-app",
-    title: "Awesome App",
-    image: "https://via.placeholder.com/800x400.png?text=Awesome+App",
-    tech: ["React", "Next.js", "Tailwind"],
-    github: "https://github.com/yourname/awesome-app",
-    live: "https://awesome-app.example.com",
-    short: "A short one-line summary of Awesome App.",
+    slug: "rent-adventure",
+    title: "Rent Adventure",
+    image: "/projects/rent-adventure.jpg",
+    tech: ["Next.js", "Tailwind", "Supabase", "Auth.js", "React Context API"],
+    github: "https://github.com/sinissto/rent-adventure",
+    live: "https://rent-adventure.vercel.app/",
+    short: "Full-stack web application for the adventure motorbike enthusiasts",
     description:
-      "Awesome App is a sample project demonstrating feature X, Y and Z. It includes authentication, realtime updates and responsive UI. Add more details here.",
+      "Full-stack web application that allows adventure motorbike enthusiasts to browse, filter, and rent motorbikes online. I designed and implemented the entire platform — from secure authentication and database integration to reservation workflows and responsive UI — ensuring real-time availability and a smooth user experience.",
   },
   {
-    slug: "portfolio-site",
-    title: "Portfolio Site",
-    image: "https://via.placeholder.com/800x400.png?text=Portfolio+Site",
-    tech: ["TypeScript", "Next.js", "CSS"],
-    github: "https://github.com/yourname/portfolio-site",
-    live: "https://portfolio.example.com",
-    short: "My personal portfolio site with projects and blog.",
+    slug: "rent-adventure-back-office",
+    title: "Rent Adventure Admin Dashboard",
+    image: "/projects/rent-adventure-back-office.jpg",
+    tech: [
+      "React",
+      "Styled Components",
+      "React Router",
+      "Tanstack Query",
+      "ReCharts",
+    ],
+    github: "https://github.com/sinissto/rent-adventure-back-office",
+    live: "https://rent-adventure-back-office.vercel.app",
+    short:
+      "Frontend admin dashboard for managing motorbikes, users, and reservations",
     description:
-      "This portfolio site showcases projects, posts and contact form. Built with Next.js and optimized for SEO and performance.",
+      "Frontend admin dashboard for managing motorbikes, users, and reservations created via the RentAdventure platform. The application enables employees to oversee the business, update the fleet, process reservations, and monitor performance through visual statistics.",
   },
   // {
   //   slug: "weather-dashboard",
