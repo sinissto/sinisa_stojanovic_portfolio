@@ -5,6 +5,7 @@ import Section from "@/components/Section";
 import { FaGithub } from "react-icons/fa";
 import { BsArrowUpRight } from "react-icons/bs";
 import React from "react";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 type Params = { params: { slug: string } };
 
@@ -109,6 +110,44 @@ export default async function ProjectDetailPage({ params }: Params) {
               </div>
             </div>
           </div>
+
+          <Tabs
+            defaultValue="purposeAndGoal"
+            className="min-w-[400px] bg-gray-600 p-6"
+          >
+            <TabsList>
+              <TabsTrigger value="purposeAndGoal">Purpose & Goal</TabsTrigger>
+              {project.spotLight.length > 0 && (
+                <TabsTrigger value="spotLight">
+                  Features I&apos;m proud of
+                </TabsTrigger>
+              )}
+              <TabsTrigger value="lesonsLearned">Lessons Learned</TabsTrigger>
+            </TabsList>
+            <TabsContent value="purposeAndGoal">
+              {project.purposeAndGoal.map((paragraph, index) => (
+                <p key={index} className="mb-4 text-white">
+                  {paragraph}
+                </p>
+              ))}
+            </TabsContent>
+            {project.spotLight.length > 0 && (
+              <TabsContent value="spotLight">
+                {project.spotLight.map((paragraph, index) => (
+                  <p key={index} className="mb-4 text-white">
+                    {paragraph}
+                  </p>
+                ))}
+              </TabsContent>
+            )}
+            <TabsContent value="lesonsLearned">
+              {project.lessonsLearned.map((paragraph, index) => (
+                <p key={index} className="mb-4 text-white">
+                  {paragraph}
+                </p>
+              ))}
+            </TabsContent>
+          </Tabs>
         </div>
       </div>
     </Section>
