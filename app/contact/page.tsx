@@ -7,6 +7,16 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { sendMessage } from "@/actions/contact";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 
 type FormData = z.infer<typeof contactFormSchema>;
 
@@ -14,13 +24,15 @@ const ContactPage = () => {
   const [status, setStatus] = useState<
     "idle" | "loading" | "success" | "error"
   >("idle");
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    reset,
-  } = useForm({
+
+  const form = useForm<FormData>({
     resolver: zodResolver(contactFormSchema),
+    defaultValues: {
+      firstName: "",
+      lastName: "",
+      email: "",
+      message: "",
+    },
   });
 
   const onSubmit = async (data: FormData) => {
@@ -30,7 +42,7 @@ const ContactPage = () => {
 
       if (!res.ok) throw new Error("Failed to send");
       setStatus("success");
-      reset();
+      form.reset();
     } catch (err) {
       console.log(err);
       setStatus("error");
@@ -38,71 +50,132 @@ const ContactPage = () => {
   };
 
   return (
-    <div className={"w-[50vw] mx-auto py-12"}>
-      <h1 className={"text-3xl font-semibold mb-6 text-accent"}>
+    <div className={"sm:w-[90vw] lg:w-[50vw] mx-auto py-16 px-4"}>
+      <h1 className={"text-4xl font-semibold mb-8 text-center text-accent"}>
         Let&apos;s work together!
       </h1>
-      <form onSubmit={handleSubmit(onSubmit)} className={"space-y-4"}>
-        <input
-          {...register("firstName")}
-          placeholder="First Name"
-          className="w-full p-2 border border-gray-300 rounded outline-none focus:border-none focus:ring-2 focus:ring-accent"
-        />
-        {errors.firstName && (
-          <p className={"text-red-500 text-sm"}>{errors.firstName.message}</p>
-        )}
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(onSubmit)} className={"space-y-6"}>
+          <div className={"grid grid-cols-1 gap-6"}>
+            {/* FIRST NAME FORM FIELD*/}
+            <FormField
+              name={"firstName"}
+              control={form.control}
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className={"text-accent"}>First name</FormLabel>
+                  <FormControl>
+                    <Input
+                      placeholder={"First name"}
+                      {...field}
+                      className={
+                        "w-full p-2 border border-gray-300 rounded outline-none focus:border-none focus:ring-2 focus:ring-accent"
+                      }
+                    />
+                  </FormControl>
+                  <FormMessage className={"text-red-500 font-semibold"} />
+                </FormItem>
+              )}
+            />
 
-        <input
-          {...register("lastName")}
-          placeholder="Last Name"
-          className="w-full p-2 border border-gray-300 rounded outline-none focus:border-none focus:ring-2 focus:ring-accent"
-        />
-        {errors.lastName && (
-          <p className={"text-red-500 text-sm"}>{errors.lastName.message}</p>
-        )}
+            {/* LAST NAME FORM FIELD*/}
+            <FormField
+              control={form.control}
+              name={"lastName"}
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className={"text-accent"}>Last name</FormLabel>
+                  <FormControl>
+                    <Input
+                      placeholder={"Last name"}
+                      {...field}
+                      className={
+                        "w-full p-2 border border-gray-300 rounded outline-none focus:border-none focus:ring-2 focus:ring-accent"
+                      }
+                    />
+                  </FormControl>
+                  <FormMessage className={"text-red-500 font-semibold"} />
+                </FormItem>
+              )}
+            />
 
-        <label htmlFor={"email"}></label>
-        <input
-          {...register("email")}
-          placeholder="Email"
-          className="w-full p-2 border border-gray-300 rounded outline-none focus:border-none focus:ring-2 focus:ring-accent"
-          autoComplete={"off"}
-          type={"email"}
-          id={"email"}
-        />
-        {errors.email && (
-          <p className={"text-red-500 text-sm"}>{errors.email.message}</p>
-        )}
+            {/* EMAIL FORM FIELD*/}
+            <FormField
+              control={form.control}
+              name={"email"}
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className={"text-accent"}>Email</FormLabel>
+                  <FormControl>
+                    <Input
+                      placeholder={"you@example.com"}
+                      {...field}
+                      type={"email"}
+                      className={
+                        "w-full p-2 border border-gray-300 rounded outline-none focus:border-none focus:ring-2 focus:ring-accent"
+                      }
+                    />
+                  </FormControl>
+                  <FormMessage className={"text-red-500 font-semibold"} />
+                </FormItem>
+              )}
+            />
 
-        <textarea
-          {...register("message")}
-          placeholder="Your message..."
-          rows={5}
-          className="w-full p-2 border border-gray-300 rounded outline-none focus:border-none focus:ring-2 focus:ring-accent"
-        />
-        {errors.message && (
-          <p className={"text-red-500 text-sm"}>{errors.message.message}</p>
-        )}
+            {/* MESSAGE FORM FIELD */}
+            <FormField
+              control={form.control}
+              name={"message"}
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className={"text-accent"}>Message</FormLabel>
+                  <FormControl>
+                    <FormControl>
+                      <Textarea
+                        placeholder={"Your message..."}
+                        rows={5}
+                        {...field}
+                        className={
+                          "w-full h-36 p-2 border border-gray-300 rounded outline-none focus:border-none focus:ring-2 focus:ring-accent"
+                        }
+                      />
+                    </FormControl>
+                  </FormControl>
+                  <FormMessage className={"text-red-500 font-semibold"} />
+                </FormItem>
+              )}
+            />
 
-        <Button
-          variant={"outline"}
-          type={"submit"}
-          disabled={status === "loading"}
-        >
-          {status === "loading" ? "Sending..." : "Send Message"}
-        </Button>
+            <Button
+              variant={"outline"}
+              type={"submit"}
+              disabled={status === "loading"}
+            >
+              {status === "loading" ? "Sending..." : "Send Message"}
+            </Button>
 
-        {status === "success" && (
-          <p className={"text-accent text-center mt-2"}>
-            Message sent successfully!
-          </p>
-        )}
-        {status === "error" && (
-          <p className={"text-red-500 text-center mt-2"}>
-            Failed to send message. Please try again.
-          </p>
-        )}
-      </form>
+            {status === "success" && (
+              <div
+                className={
+                  "text-accent text-center mt-2 flex items-center justify-center gap-3"
+                }
+              >
+                <span className={"text-3xl"}>✓</span>
+                <span>Message sent successfully!</span>
+              </div>
+            )}
+            {status === "error" && (
+              <div
+                className={
+                  "text-red-500 text-center flex items-center justify-center gap-3"
+                }
+              >
+                <span className={"text-3xl"}>❌</span>
+                <span>Failed to send message. Please try again.</span>
+              </div>
+            )}
+          </div>
+        </form>
+      </Form>
     </div>
   );
 };
