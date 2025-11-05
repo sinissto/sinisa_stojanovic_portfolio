@@ -27,7 +27,7 @@ const ContactPage = () => {
     setStatus("loading");
     try {
       const res = await sendMessage(data);
-      console.log(res);
+
       if (!res.ok) throw new Error("Failed to send");
       setStatus("success");
       reset();
