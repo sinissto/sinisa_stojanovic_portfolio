@@ -16,7 +16,9 @@ export default function HomePage() {
         >
           {/*  Left side */}
           <div className={"text-center lg:text-left order-2 lg:order-none"}>
-            <span className={"text-xl"}>Software Developer</span>
+            <span className={"inline-block text-xl mb-3"}>
+              Software Developer
+            </span>
             <h1 className={"h1 mb-6"}>
               Hello, I&apos;m
               <br />
@@ -53,7 +55,6 @@ export default function HomePage() {
             </div>
           </div>
           {/* Right side */}
-          {/* todo: add homepage photo*/}
           <div className={"order-1 lg:order-none mb-8 lg:mb-0"}>
             <Photo />
           </div>
