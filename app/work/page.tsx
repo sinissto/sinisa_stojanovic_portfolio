@@ -22,7 +22,7 @@ const WorkPage = () => {
             transition: { delay: 2, duration: 0.4, ease: "easeIn" },
           }}
           // className={"w-full flex gap-10"}
-          className="grid gap-10 grid-cols-1 justify-center sm:grid-cols-2 lg:grid-cols-2"
+          className="grid gap-10 grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 items-stretch auto-rows-fr"
         >
           {projects.map((project) => (
             <ProjectCard key={project.slug} project={project} />

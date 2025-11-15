@@ -6,7 +6,8 @@ export const projects = [
     tech: ["Next.js", "Tailwind", "Supabase", "Auth.js", "React Context API"],
     github: "https://github.com/sinissto/rent-adventure",
     live: "https://rent-adventure.vercel.app/",
-    short: "Full-stack web application for the adventure motorbike enthusiasts",
+    short:
+      "Full-stack web application for the adventure motorbike enthusiasts to book/reserve motorbikes online fot rental.",
     description:
       "Full-stack web application that allows adventure motorbike enthusiasts to browse, filter, and rent motorbikes online. I designed and implemented the entire platform — from secure authentication and database integration to reservation workflows and responsive UI — ensuring real-time availability and a smooth user experience.",
     features: [
@@ -49,7 +50,7 @@ export const projects = [
     github: "https://github.com/sinissto/rent-adventure-back-office",
     live: "https://rent-adventure-back-office.vercel.app",
     short:
-      "Frontend admin dashboard for managing motorbikes, users, and reservations",
+      "Frontend admin dashboard for managing motorbikes, users, and reservations, built for the RentAdventure platform.",
     description:
       "Frontend admin dashboard for managing motorbikes, users, and reservations created via the RentAdventure platform. The application enables employees to oversee the business, update the fleet, process reservations, and monitor performance through visual statistics.",
     features: [
