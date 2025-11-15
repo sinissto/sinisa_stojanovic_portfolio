@@ -8,6 +8,12 @@ import Socials from "@/components/home/Socials";
 import { Button } from "@/components/ui/button";
 import { FaGithub } from "react-icons/fa";
 import { BsArrowUpRight } from "react-icons/bs";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 type Project = {
   slug: string;
@@ -53,7 +59,7 @@ export default function ProjectCard({ project }: { project: Project }) {
 
   return (
     <div
-      className="relative w-full"
+      className="relative w-full h-full"
       style={containerStyle}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
@@ -81,7 +87,11 @@ export default function ProjectCard({ project }: { project: Project }) {
 
       <div style={innerStyle} className="relative w-full h-full">
         {/* front */}
-        <div style={faceStyle} className="bg-[#232329] shadow-md">
+        {/* front: make it stretch using flex + h-full */}
+        <div
+          style={faceStyle}
+          className="bg-[#232329] shadow-md flex flex-col h-full"
+        >
           {/* screenshot of project*/}
           <div className="w-full h-56 relative">
             {!hover && (
@@ -101,22 +111,24 @@ export default function ProjectCard({ project }: { project: Project }) {
               className="w-full h-full object-cover"
             />
           </div>
-          <div className="py-3 px-5">
-            <h3 className="font-semibold text-lg text-accent mb-5">
+          <div className="flex flex-col py-3 px-5">
+            <h3 className="h-[48px] font-semibold text-lg text-accent mb-5">
               {project.title}
             </h3>
             <p className="text-sm text-white mb-5">{project.short}</p>
 
-            <h3 className={"font-semibold mb-2"}>Technologies</h3>
-            <div className="flex flex-wrap gap-2 mb-5">
-              {project.tech.map((t) => (
-                <span
-                  key={t}
-                  className="text-xs inline-block px-3 py-1 ring ring-accent rounded"
-                >
-                  {t}
-                </span>
-              ))}
+            <div>
+              <h3 className={"font-semibold mb-2"}>Technologies</h3>
+              <div className="flex flex-wrap gap-2 mb-5">
+                {project.tech.map((t) => (
+                  <span
+                    key={t}
+                    className="text-xs inline-block px-3 py-1 ring ring-accent rounded"
+                  >
+                    {t}
+                  </span>
+                ))}
+              </div>
             </div>
 
             {/*<div className="mb-4 flex gap-3">*/}
@@ -147,7 +159,11 @@ export default function ProjectCard({ project }: { project: Project }) {
         </div>
 
         {/* back */}
-        <div style={backStyle} className="bg-[#232329] shadow-md p-5">
+        {/* back: stretch and space content so controls stay at the bottom */}
+        <div
+          style={backStyle}
+          className="bg-[#232329] shadow-md p-5 flex flex-col h-full justify-between"
+        >
           <h3 className="font-semibold text-xl text-accent mb-5">
             {project.title}
           </h3>
@@ -157,22 +173,40 @@ export default function ProjectCard({ project }: { project: Project }) {
           <div className="flex flex-col items-center">
             <div className="mb-4 flex gap-8">
               {project.github && (
-                <Link
-                  href={project.github}
-                  className={`text-2xl w-11 h-11 border-2 hover:border-accent rounded-full flex items-center justify-center text-accent  hover:bg-accent hover:text-primary active:scale-90 transition hover:transition-all duration-200`}
-                  target={"_blank"}
-                >
-                  <FaGithub />
-                </Link>
+                <TooltipProvider delayDuration={100}>
+                  <Tooltip>
+                    <TooltipTrigger>
+                      <Link
+                        href={project.github}
+                        className={`text-2xl w-11 h-11 border-2 hover:border-accent rounded-full flex items-center justify-center text-accent  hover:bg-accent hover:text-primary active:scale-90 transition hover:transition-all duration-200`}
+                        target={"_blank"}
+                      >
+                        <FaGithub />
+                      </Link>
+                    </TooltipTrigger>
+                    <TooltipContent className={"bg-accent text-primary"}>
+                      GitHub Repo
+                    </TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
               )}
               {project.live && (
-                <Link
-                  href={project.live}
-                  className={`text-2xl w-11 h-11 border-2 hover:border-accent rounded-full flex items-center justify-center text-accent  hover:bg-accent hover:text-primary active:scale-90 transition hover:transition-all duration-200`}
-                  target={"_blank"}
-                >
-                  <BsArrowUpRight />
-                </Link>
+                <TooltipProvider delayDuration={100}>
+                  <Tooltip>
+                    <TooltipTrigger>
+                      <Link
+                        href={project.live}
+                        className={`text-2xl w-11 h-11 border-2 hover:border-accent rounded-full flex items-center justify-center text-accent  hover:bg-accent hover:text-primary active:scale-90 transition hover:transition-all duration-200`}
+                        target={"_blank"}
+                      >
+                        <BsArrowUpRight />
+                      </Link>
+                    </TooltipTrigger>
+                    <TooltipContent className={"bg-accent text-primary"}>
+                      Deployed
+                    </TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
               )}
             </div>
             <Button
