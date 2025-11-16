@@ -45,29 +45,4 @@ const Socials = () => {
   );
 };
 
-// <TooltipProvider delayDuration={100}>
-//                             <Tooltip>
-//                               <TooltipTrigger
-//                                 className={
-//                                   "w-full h-[150px] bg-[#232329] rounded-xl flex justify-center items-center group"
-//                                 }
-//                               >
-//                                 <div
-//                                   className={
-//                                     "text-6xl group-hover:text-accent transition-all duration-300"
-//                                   }
-//                                 >
-//                                   <skill.icon className={"hover:text-accent"} />
-//                                 </div>
-//                               </TooltipTrigger>
-//                               <TooltipContent
-//                                 className={"bg-accent text-primary"}
-//                               >
-//                                 <p className={"capitalize font-semibold"}>
-//                                   {skill.name}
-//                                 </p>
-//                               </TooltipContent>
-//                             </Tooltip>
-//                           </TooltipProvider>
-
 export default Socials;

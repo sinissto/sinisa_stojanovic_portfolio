@@ -6,6 +6,12 @@ import { FaGithub } from "react-icons/fa";
 import { BsArrowUpRight } from "react-icons/bs";
 import React from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 type Params = { params: { slug: string } };
 
@@ -31,17 +37,8 @@ export default async function ProjectDetailPage({ params }: Params) {
             {project.title}
           </h1>
 
-          <div className="mt-4 max-w-3xl">
-            {/*<div className="w-full h-56 bg-gray-100">*/}
-            {/*  /!* todo: Replace <img/> tag with Next.js <Image/> *!/*/}
-            {/*  <img*/}
-            {/*    src={project.image}*/}
-            {/*    alt={project.title}*/}
-            {/*    className="w-full h-full object-cover rounded"*/}
-            {/*  />*/}
-            {/*</div>*/}
-
-            <div className="mt-4">
+          <div className="flex flex-col lg:flex-row mt-4 mb-8 gap-6">
+            <div className="max-w-3xl mt-4 order-2 lg-order-1">
               <p className="text-white">{project.description}</p>
 
               <h4 className="mt-4 font-medium">Features:</h4>
@@ -64,48 +61,54 @@ export default async function ProjectDetailPage({ params }: Params) {
                   </span>
                 ))}
               </div>
+            </div>
 
-              {/*<div className="mt-4 flex gap-4">*/}
-              {/*  {project.github && (*/}
-              {/*    <a*/}
-              {/*      href={project.github}*/}
-              {/*      target="_blank"*/}
-              {/*      rel="noreferrer"*/}
-              {/*      className="text-blue-600 underline"*/}
-              {/*    >*/}
-              {/*      View on GitHub*/}
-              {/*    </a>*/}
-              {/*  )}*/}
-              {/*  {project.live && (*/}
-              {/*    <a*/}
-              {/*      href={project.live}*/}
-              {/*      target="_blank"*/}
-              {/*      rel="noreferrer"*/}
-              {/*      className="text-green-600 underline"*/}
-              {/*    >*/}
-              {/*      Open Live App*/}
-              {/*    </a>*/}
-              {/*  )}*/}
-              {/*</div>*/}
+            <div className="w-full order-1 lg:order-2">
+              {/* todo: Replace <img/> tag with Next.js <Image/> */}
+              <img
+                src={project.image}
+                alt={project.title}
+                className={
+                  "border-2 border-accent rounded overflow-hidden object-cover shadow-lg"
+                }
+              />
 
-              <div className="mt-8 mb-4 flex gap-8">
+              <div className="mt-10 mb-4 flex gap-8">
                 {project.github && (
-                  <Link
-                    href={project.github}
-                    className={`text-2xl w-11 h-11 border-2 hover:border-accent rounded-full flex items-center justify-center text-accent  hover:bg-accent hover:text-primary active:scale-90 transition hover:transition-all duration-200`}
-                    target={"_blank"}
-                  >
-                    <FaGithub />
-                  </Link>
+                  <TooltipProvider delayDuration={100}>
+                    <Tooltip>
+                      <TooltipTrigger>
+                        <Link
+                          href={project.github}
+                          className={`text-2xl w-11 h-11 border-2 hover:border-accent rounded-full flex items-center justify-center text-accent  hover:bg-accent hover:text-primary active:scale-90 transition hover:transition-all duration-200`}
+                          target={"_blank"}
+                        >
+                          <FaGithub />
+                        </Link>
+                      </TooltipTrigger>
+                      <TooltipContent className={"bg-accent text-primary"}>
+                        GitHab Repo
+                      </TooltipContent>
+                    </Tooltip>
+                  </TooltipProvider>
                 )}
                 {project.live && (
-                  <Link
-                    href={project.live}
-                    className={`text-2xl w-11 h-11 border-2 hover:border-accent rounded-full flex items-center justify-center text-accent  hover:bg-accent hover:text-primary active:scale-90 transition hover:transition-all duration-200`}
-                    target={"_blank"}
-                  >
-                    <BsArrowUpRight />
-                  </Link>
+                  <TooltipProvider delayDuration={100}>
+                    <Tooltip>
+                      <TooltipTrigger>
+                        <Link
+                          href={project.live}
+                          className={`text-2xl w-11 h-11 border-2 hover:border-accent rounded-full flex items-center justify-center text-accent  hover:bg-accent hover:text-primary active:scale-90 transition hover:transition-all duration-200`}
+                          target={"_blank"}
+                        >
+                          <BsArrowUpRight />
+                        </Link>
+                      </TooltipTrigger>
+                      <TooltipContent className={"bg-accent text-primary"}>
+                        Deployed
+                      </TooltipContent>
+                    </Tooltip>
+                  </TooltipProvider>
                 )}
               </div>
             </div>
@@ -113,16 +116,20 @@ export default async function ProjectDetailPage({ params }: Params) {
 
           <Tabs
             defaultValue="purposeAndGoal"
-            className="min-w-[400px] bg-gray-600 p-6"
+            className="min-w-[400px] bg-[#27272c] p-6 rounded-lg "
           >
-            <TabsList>
-              <TabsTrigger value="purposeAndGoal">Purpose & Goal</TabsTrigger>
+            <TabsList className={"flex flex-col md:flex-row"}>
+              <TabsTrigger value="purposeAndGoal" className={"bg-primary"}>
+                Purpose & Goal
+              </TabsTrigger>
               {project.spotLight.length > 0 && (
-                <TabsTrigger value="spotLight">
+                <TabsTrigger value="spotLight" className={"bg-primary"}>
                   Features I&apos;m proud of
                 </TabsTrigger>
               )}
-              <TabsTrigger value="lesonsLearned">Lessons Learned</TabsTrigger>
+              <TabsTrigger value="lesonsLearned" className={"bg-primary"}>
+                Lessons Learned
+              </TabsTrigger>
             </TabsList>
             <TabsContent value="purposeAndGoal">
               {project.purposeAndGoal.map((paragraph, index) => (

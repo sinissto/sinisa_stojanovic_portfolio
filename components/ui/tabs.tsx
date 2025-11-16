@@ -26,7 +26,7 @@ function TabsList({
     <TabsPrimitive.List
       data-slot="tabs-list"
       className={cn(
-        "inline-flex h-auto rounded-md p-1 text-primary ",
+        "inline-flex h-auto rounded-md p-1 text-primary gap-4",
         className
       )}
       {...props}
