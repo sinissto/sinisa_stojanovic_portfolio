@@ -54,38 +54,22 @@ const ResumePage = () => {
                     <h3 className={"text-4xl font-bold text-accent"}>
                       {aboutMe.title}
                     </h3>
-                    <ul className={"max-w-[700px] text-white mx-auto lg:mx-0"}>
-                      {aboutMe.description.map((desc, index) => (
-                        <li key={index} className={"mb-5"}>
-                          {desc}
-                        </li>
-                      ))}
-                    </ul>
 
-                    {/*<ul*/}
-                    {/*  className={*/}
-                    {/*    "grid grid-cols-1 lg:grid-cols-2 gap-y-6 max-w-[720px] mx-auto lg:mx-0"*/}
-                    {/*  }*/}
-                    {/*>*/}
-                    {/*  {aboutMe.info.map((item, index) => (*/}
-                    {/*    <li*/}
-                    {/*      key={index}*/}
-                    {/*      className={*/}
-                    {/*        "flex items-center justify-center lg:justify-start gap-4"*/}
-                    {/*      }*/}
-                    {/*    >*/}
-                    {/*      <span className={"text-accent "}>*/}
-                    {/*        {item.fieldName}*/}
-                    {/*      </span>*/}
-                    {/*      <span className={"text-white/60"}>*/}
-                    {/*        {item.fieldValue}*/}
-                    {/*      </span>*/}
-                    {/*    </li>*/}
-                    {/*  ))}*/}
-                    {/*</ul>*/}
+                    <ScrollArea className={"h-[70vh]"}>
+                      <ul
+                        className={"max-w-[700px] text-white mx-auto lg:mx-0"}
+                      >
+                        {aboutMe.description.map((desc, index) => (
+                          <li key={index} className={"mb-5"}>
+                            {desc}
+                          </li>
+                        ))}
+                      </ul>
+                    </ScrollArea>
                   </div>
                 </TabsContent>
-                <TabsContent className={"w-full"} value={"experience"}>
+
+                <TabsContent className={"w-full h-[70vh]"} value={"experience"}>
                   {/* Experience */}
                   <div
                     className={
@@ -98,7 +82,7 @@ const ResumePage = () => {
                     >
                       {experience.description}
                     </p>
-                    <ScrollArea className={"h-[700px]"}>
+                    <ScrollArea className={"h-[300px]"}>
                       <ul
                         className={"grid grid-cols-1 max-w-[700px] gap-[30px]"}
                       >
@@ -195,40 +179,44 @@ const ResumePage = () => {
                       </h3>
                       <p className={"max-w-[700px] "}>{skills.description}</p>
                     </div>
-                    <ul
-                      className={
-                        "grid grid-cols-2 sm:grid-cols-3 max-w-[700px] lg:gap-[30px] gap-4"
-                      }
-                    >
-                      {skills.skillList.map((skill, index) => (
-                        <li key={index} className={""}>
-                          <TooltipProvider delayDuration={100}>
-                            <Tooltip>
-                              <TooltipTrigger
-                                className={
-                                  "w-full h-[150px] bg-[#232329] rounded-xl flex justify-center items-center group"
-                                }
-                              >
-                                <div
+                    <ScrollArea className={"h-[300px]"}>
+                      <ul
+                        className={
+                          "grid grid-cols-2 sm:grid-cols-3 max-w-[700px] lg:gap-[30px] gap-4"
+                        }
+                      >
+                        {skills.skillList.map((skill, index) => (
+                          <li key={index} className={""}>
+                            <TooltipProvider delayDuration={100}>
+                              <Tooltip>
+                                <TooltipTrigger
                                   className={
-                                    "text-6xl group-hover:text-accent transition-all duration-300"
+                                    "w-full h-[150px] bg-[#232329] rounded-xl flex justify-center items-center group"
                                   }
                                 >
-                                  <skill.icon className={"hover:text-accent"} />
-                                </div>
-                              </TooltipTrigger>
-                              <TooltipContent
-                                className={"bg-accent text-primary"}
-                              >
-                                <p className={"capitalize font-semibold"}>
-                                  {skill.name}
-                                </p>
-                              </TooltipContent>
-                            </Tooltip>
-                          </TooltipProvider>
-                        </li>
-                      ))}
-                    </ul>
+                                  <div
+                                    className={
+                                      "text-6xl group-hover:text-accent transition-all duration-300"
+                                    }
+                                  >
+                                    <skill.icon
+                                      className={"hover:text-accent"}
+                                    />
+                                  </div>
+                                </TooltipTrigger>
+                                <TooltipContent
+                                  className={"bg-accent text-primary"}
+                                >
+                                  <p className={"capitalize font-semibold"}>
+                                    {skill.name}
+                                  </p>
+                                </TooltipContent>
+                              </Tooltip>
+                            </TooltipProvider>
+                          </li>
+                        ))}
+                      </ul>
+                    </ScrollArea>
                   </div>
                 </TabsContent>
               </div>
