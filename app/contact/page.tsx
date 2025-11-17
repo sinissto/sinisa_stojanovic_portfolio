@@ -177,13 +177,14 @@ const ContactPage = () => {
                   />
 
                   <motion.div
-                    whileTap={{ scale: 0.95 }}
-                    className={"text-center"}
+                    // whileTap={{ scale: 0.95 }}
+                    className={"text-center outline-none pointer-events-none"}
                   >
                     <Button
                       variant={"outline"}
                       type={"submit"}
                       disabled={status === "loading"}
+                      className={"outline-none active:scale-95"}
                     >
                       {status === "loading" ? "Sending..." : "Send Message"}
                     </Button>
