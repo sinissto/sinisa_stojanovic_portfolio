@@ -178,7 +178,7 @@ const ContactPage = () => {
 
                   <motion.div
                     // whileTap={{ scale: 0.95 }}
-                    className={"text-center outline-none pointer-events-none"}
+                    className={"text-center outline-none"}
                   >
                     <Button
                       variant={"outline"}
