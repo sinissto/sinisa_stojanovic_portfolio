@@ -13,9 +13,10 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 
-type Params = { params: { slug: string } };
+// Make params a Promise so `await params` is valid and satisfies Next.js PageProps constraint
+type Props = { params: Promise<{ slug: string }> };
 
-export default async function ProjectDetailPage({ params }: Params) {
+export default async function ProjectDetailPage({ params }: Props) {
   const { slug } = await params;
 
   const project = projects.find((p) => p.slug === slug);
