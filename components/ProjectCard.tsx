@@ -1,10 +1,8 @@
 "use client";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
-import { FiRefreshCw } from "react-icons/fi";
 import { HiCursorArrowRipple } from "react-icons/hi2";
 import Link from "next/link";
-import Socials from "@/components/home/Socials";
 import { Button } from "@/components/ui/button";
 import { FaGithub } from "react-icons/fa";
 import { BsArrowUpRight } from "react-icons/bs";
