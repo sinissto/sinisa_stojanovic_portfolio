@@ -24,8 +24,8 @@ export const metadata: Metadata = {
   title: "Portfolio - Sinisa Stojanovic",
   description: "Sinisa Stojanovic's personal portfolio website.",
   icons: {
-    // todo: replace with your favicon icon and path
-    icon: "/favicon.ico",
+    // todo: replace with your favicon icon and path, favicon.ico was located in app/favicon.ico
+    // icon: "/favicon.ico",
   },
 };
 
