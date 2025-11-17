@@ -16,7 +16,6 @@ import {
 type Params = { params: { slug: string } };
 
 export default async function ProjectDetailPage({ params }: Params) {
-  // Await params to comply with Next.js dynamic route requirements
   const { slug } = await params;
 
   const project = projects.find((p) => p.slug === slug);
